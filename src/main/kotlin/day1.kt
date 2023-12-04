@@ -1,8 +1,9 @@
 // Part 1
 fun getCalibrationValues(input: List<String>): List<Int> {
     return input.map { l ->
-        val digits = l.filter(Char::isDigit)
-        charArrayOf(digits.first(), digits.last()).concatToString().toInt()
+        l.filter(Char::isDigit).let {
+            charArrayOf(it.first(), it.last()).concatToString().toInt()
+        }
     }
 }
 

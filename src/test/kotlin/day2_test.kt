@@ -17,9 +17,9 @@ class Day2Tests {
         val game = Game.parse(TEST_INPUT[0])
         assertEquals(game.draws.size, 3)
         assertEquals(game.draws, listOf(
-            listOf(Pair(3, Color.blue), Pair(4, Color.red)),
-            listOf(Pair(1, Color.red), Pair(2, Color.green), Pair(6, Color.blue)),
-            listOf(Pair(2, Color.green)),
+            mapOf(Color.blue to 3 ,Color.red to 4),
+            mapOf(Color.red to 1,Color.green to 2, Color.blue to 6),
+            mapOf(Color.green to 2),
         ))
     }
 
