@@ -7,10 +7,10 @@ data class Game(val n: Int, val draws: List<Map<Color, Int>>) {
         fun parse(str: String): Game {
             val group = Regex("Game (\\d+):").matchAt(str, 0)!!.groups[1]!!
             val draws = str.substring(group.range.last + 2).split(";").map {
-                it.split(",").map {
+                it.split(",").associate {
                     val match = Regex("(\\d+) (\\w+)").matchEntire(it.trim())
-                    Pair(Color.valueOf(match!!.groups[2]!!.value), match.groups[1]!!.value.toInt())
-                }.toMap()
+                    Color.valueOf(match!!.groups[2]!!.value)to match.groups[1]!!.value.toInt()
+                }
             }
             return Game(group.value.toInt(), draws)
         }
