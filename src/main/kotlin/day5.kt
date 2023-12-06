@@ -1,3 +1,5 @@
+import kotlin.math.min
+
 data class Almanac(
     var seeds: List<Long>,
     val maps: List<Map<LongRange, LongRange>>) {
@@ -32,9 +34,13 @@ data class Almanac(
 
 val almanac = Almanac.parse(readInput("day5"))
 
+fun part2(almanac: Almanac): Long = almanac.seeds.chunked(2).pmap { (start, length) ->
+    (start..<(start + length)).fold(Long.MAX_VALUE) {m, e -> min(m, almanac.lookup(e))}
+}.reduce(::min)
+
 fun main() {
     // Part 1
     println(almanac.lookup().min())
     // Part 2
-    // TODO
+    println(part2(almanac))
 }

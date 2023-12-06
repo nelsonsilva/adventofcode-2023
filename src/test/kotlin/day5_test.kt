@@ -43,11 +43,11 @@ class Day5Tests {
 
     @Test
     fun testParseAlmanac() {
-        assertEquals(listOf(79, 14, 55, 13), almanac.seeds)
+        assertEquals(listOf(79L, 14L, 55L, 13L), almanac.seeds)
         assertEquals(7, almanac.maps.size)
         assertEquals(mapOf(
-            98..99 to 50..51,
-            50..97 to 52..99
+            98L..99L to 50L..51L,
+            50L..97L to 52L..99L
             ),
             almanac.maps.first()
         )
@@ -56,13 +56,13 @@ class Day5Tests {
     @Test
     fun testLookup() {
         val seedToSoil = almanac.maps.first()
-        assertEquals(listOf(81, 14, 57, 13), almanac.seeds.map { almanac.lookup(it, seedToSoil) })
-        assertEquals(listOf(82, 43, 86, 35), almanac.lookup())
+        assertEquals(listOf(81L, 14L, 57L, 13L), almanac.seeds.map { almanac.lookup(it, seedToSoil) })
+        assertEquals(listOf(82L, 43L, 86L, 35L), almanac.lookup())
     }
 
     @Test
-    fun testTotalCards() {
-        assertEquals(30, totalCards(cards))
+    fun testPart2() {
+        assertEquals(46,part2(almanac))
     }
 
 }
