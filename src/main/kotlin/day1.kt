@@ -36,9 +36,8 @@ fun findNumbers(line: String): String {
     return res
 }
 
-val INPUT = readInput("day1").split("\n")
-
 fun main() {
+    val INPUT = readInput("day1").split("\n")
     // Part 1
     println(getCalibrationValues(INPUT).sum())
     // Part 2

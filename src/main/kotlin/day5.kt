@@ -7,14 +7,14 @@ data class Almanac(
         // Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53,
         fun parse(str: String): Almanac {
             val lines = str.split("\n")
-            val seeds = lines.first().findAllNumbers()
+            val seeds = lines.first().findAllLongs()
             val maps = mutableListOf<MutableMap<LongRange, LongRange>>()
             lines.subList(1, lines.size).filter { it.isNotBlank() }.forEach {line ->
                 val map = "(.+) map:".toRegex().find(line)
                 if (map != null) {
                     maps.add(mutableMapOf())
                 } else {
-                    val (dst, src, length) = line.findAllNumbers()
+                    val (dst, src, length) = line.findAllLongs()
                     maps.last()[src..<src + length] = dst..<dst + length
                 }
             }
